@@ -1,0 +1,20 @@
+@Configuration
+public class FirebaseConfig {
+
+    @PostConstruct
+    public void initialize(){
+        try {
+            
+            FirebaseOptions options = FirebaseOptions.builder()
+                .setProjectId("crud-test")
+                .setCredentials(GoogleCredentials.applicationDefault())
+                .build();
+
+            Firebase.initializeApp(options);
+
+            System.setProperty("FIRESTORE_EMULATOR_HOST", "localhost:8080");
+
+        } catch (Exception ex) {
+            throw new RuntimeException("Failed to initialize", ex;        }
+    }
+}
